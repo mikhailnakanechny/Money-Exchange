@@ -1,16 +1,12 @@
 // PLEASE DON'T change function name
 module.exports = function makeExchange(currency) {
-    // Your code goes here! 50¢, 25¢, 10¢, 5¢ and 1¢,
+    // Your code goes here!
     // Return an object containing the minimum number of coins needed to make change
     let cur = currency;
-//const p=1; n=5; d=10; q=25; h=50;
-let P="P", N="N", D="D", Q="Q", H="H";
-    // let keyArr=["H:","Q:","D:","N:","P:"];
+
     let arr = [50, 25, 10, 5, 1];
     let countArr = [];
-
     for (var i = 0; i < arr.length; i++) {
-
         if (cur / arr[i] > 0) {
             countArr[i] = Math.floor(cur / arr[i]);
             cur = cur - countArr[i] * arr[i];
@@ -19,10 +15,9 @@ let P="P", N="N", D="D", Q="Q", H="H";
     }
 
     let outObj = {};
-
     if (currency > 10000) {
         outObj = {error: "You are rich, my friend! We don't have so much coins for exchange"};
-    } else if ((currency == 0)&(currency < 0)) {
+    } else if ((currency === 0)&&(currency < 0)) {
         outObj = {};
     } else if (currency > 0) {
         if (countArr[0] > 0) {
@@ -44,5 +39,3 @@ let P="P", N="N", D="D", Q="Q", H="H";
     return outObj;
 };
 
-
-//  console.log(outObj);
